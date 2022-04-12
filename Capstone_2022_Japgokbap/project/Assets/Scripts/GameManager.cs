@@ -1,46 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    #region Private
+    #region "Pulbic"
 
-    private GameObject loginpanel;
-    private GameObject lobbypanel;
+    public GameObject player;
+    //싱글톤
+    public static GameManager instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                m_instance = FindObjectOfType<GameManager>();
+            }
+
+            return m_instance;
+        }
+    }
+    #endregion
+
+    #region "Private"
+    private static GameManager m_instance;
 
     #endregion
 
-    #region Public
+    #region "Public Methods"
 
-    [Header("Scenes")]
-    public Scene samplescene;
-
-    [Header("UI")]
-    public Text sample;
-
-    #endregion 
-
-    void Start()
+    public Vector3 GetPlayerPosition()
     {
-        loginpanel = GameObject.Find("LoginPanel");
-        lobbypanel = GameObject.Find("LobbyPanel");
+        return player.transform.position;
     }
 
-    public void ActivePanel(GameObject panel)
-    {
-        panel.SetActive(true);
-    }
-
-    public void DeativePanel(GameObject panel)
-    {
-        panel.SetActive(false);
-    }
-
-    public void Gamestart()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
+    #endregion
 }
