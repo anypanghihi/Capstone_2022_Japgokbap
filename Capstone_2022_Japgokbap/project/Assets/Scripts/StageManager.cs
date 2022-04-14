@@ -32,11 +32,14 @@ public class StageManager : MonoBehaviour
             return m_instance;
         }
     }
+
     public int testCount1;
     public int testCount2;
     public bool testBoolean;
+
     public float timer;
     public int waitingTime;
+    
     public int testI;
 
     #endregion
