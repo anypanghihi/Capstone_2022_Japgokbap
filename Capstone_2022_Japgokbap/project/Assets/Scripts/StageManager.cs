@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Text;
@@ -33,14 +34,21 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public int testCount1;
-    public int testCount2;
-    public bool testBoolean;
-
-    public float timer;
+    [Header ("Settings")]
     public int waitingTime;
-    
-    public int testI;
+    public int spawnerCount;
+    public bool roundEnded;
+
+    [Header ("1-1")]
+    public GameObject monsters1;
+    public int count1;
+    public int count2;
+
+    [Header ("1-2")]
+    public GameObject monsters2;
+    public int count3;
+    public int count4;
+    public int count5;
 
     #endregion
 
@@ -58,45 +66,52 @@ public class StageManager : MonoBehaviour
 
     #endregion
 
-    #region "Public Methods"
-
-    public void SpawnMonsters()
-    {
-
-    }
-
-    #endregion
-
     void Start()
     {
-        Invoke("SpawnMonsters", 3f);
+        StartCoroutine(SpawnMonsters());
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
+        
+    }
 
-        if (testCount1 == 0)
+    #region "Public Methods"
+
+    #endregion
+
+    #region "Private Methods"
+    
+    private IEnumerator SpawnMonsters()
+    {
+        while (!roundEnded)
         {
-            testBoolean = true;
-        }
+            if (count1 > 0)
+            {
+                Monster monster = Instantiate(skeletons[0], enemySpawner[spawnerCount++ % 3].transform.position, Quaternion.identity);
+                monster.transform.parent = monsters1.transform;
 
-        if (!testBoolean && timer > waitingTime && testCount1 > 0)
-        {
-            Instantiate(skeletons[0], enemySpawner[testI++ % 3].transform.position, Quaternion.identity);
+                yield return new WaitForSeconds(waitingTime);
 
-            testCount1--;
-            timer = 0f;
-        }
+                count1--;
+            }
+            else if (count2 > 0)
+            {
+                Monster monster = Instantiate(skeletons[1], enemySpawner[spawnerCount++ % 3].transform.position, Quaternion.identity);
+                monster.transform.parent = monsters2.transform;
 
-        if (testBoolean && timer > waitingTime && testCount2 > 0)
-        {
-            Instantiate(skeletons[1], enemySpawner[testI++ % 3].transform.position, Quaternion.identity);
+                yield return new WaitForSeconds(waitingTime);
 
-            testCount2--;
-            timer = 0f;
+                count2--;
+            }
+            else
+            {
+                yield return null;
+            }
         }
     }
+
+    #endregion
 
     /*
     void Start() 
