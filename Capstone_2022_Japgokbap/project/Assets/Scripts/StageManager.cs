@@ -34,6 +34,9 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public Dictionary<Byte, GameObject> m_pool = new Dictionary<byte, GameObject>();
+    public Queue<GameObject> m_queue = new Queue<GameObject>();
+
     [Header ("Settings")]
     public int waitingTime;
     public int spawnerCount;
@@ -52,7 +55,56 @@ public class StageManager : MonoBehaviour
     public GameObject monsters2;
     public int count3;
     public int count4;
+
+    [Header ("1-3")]
+    public GameObject monsters3;
     public int count5;
+    public int count6;
+
+    [Header ("2-1")]
+    public GameObject monsters4;
+    public int count7;
+    public int count8;
+
+    [Header ("2-2")]
+    public GameObject monsters5;
+    public int count9;
+    public int count10;
+
+    [Header ("2-3")]
+    public GameObject monsters6;
+    public int count11;
+    public int count12;
+
+    [Header ("2-4")]
+    public GameObject monsters7;
+    public int count13;
+    public int count14;
+
+    [Header ("3-1")]
+    public GameObject monsters8;
+    public int count15;
+    public int count16;
+
+    [Header ("3-2")]
+    public GameObject monsters9;
+    public int count17;
+    public int count18;
+
+    [Header ("3-3")]
+    public GameObject monsters10;
+    public int count19;
+    public int count20;
+
+    [Header ("3-4")]
+    public GameObject monsters11;
+    public int count21;
+    public int count22;
+
+    [Header ("3-5")]
+    public GameObject monsters12;
+    public int count23;
+    public int count24;
 
     #endregion
 
@@ -61,24 +113,74 @@ public class StageManager : MonoBehaviour
     private static StageManager m_instance;
 
     [Header ("Spawners")]
+    [SerializeField] private GameObject monsterPool;
     [SerializeField] private GameObject[] enemySpawner;
 
     [Header ("Monsters")]
-    [SerializeField] private Monster[] skeletons;
-    [SerializeField] private Monster[] goblins;
-    [SerializeField] private Monster[] orcs;
+    [SerializeField] private GameObject[] skeletons;
+    [SerializeField] private GameObject[] goblins;
+    [SerializeField] private GameObject[] orcs;
 
     [Header ("Special Monsters")]
-    [SerializeField] private Monster[] specialMonsters;
+    [SerializeField] private GameObject[] specialMonsters;
 
     #endregion
 
     void Start()
     {
+        // 파일에 기록된 수만큼 몬스터 미리 생성해야함
+        for (int i = 0; i < count1; i++)
+        {
+            GameObject monster = Instantiate(skeletons[0], monsterPool.transform.position, Quaternion.identity);
+            InsertMonsterInQueue(monster);
+        }
+
+        for (int i = 0; i < count2; i++)
+        {
+            GameObject monster = Instantiate(skeletons[1], monsterPool.transform.position, Quaternion.identity);
+            InsertMonsterInQueue(monster);
+        }
+
         StartCoroutine(SpawnMonsters());
     }
 
     #region "Public Methods"
+
+    public void InsertMonsterInDictionary(Byte code, GameObject monster)
+    {
+        m_pool.Add(code, monster);
+        monster.SetActive(false);
+    }
+
+    public GameObject GetMonsterInDictionary(Byte code)
+    {
+        m_pool.Remove(code);
+        GameObject monster;
+        if (m_pool.TryGetValue(code, out monster))
+        {
+            monster.SetActive(true);
+
+            return monster;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public void InsertMonsterInQueue(GameObject monster)
+    {
+        m_queue.Enqueue(monster);
+        monster.transform.parent = monsterPool.transform;
+        monster.SetActive(false);
+    }
+
+    public GameObject GetMonsterInQueue()
+    {
+        GameObject monster = m_queue.Dequeue();
+
+        return monster;
+    }
 
     #endregion
 
@@ -88,23 +190,23 @@ public class StageManager : MonoBehaviour
     {
         while (!roundEnded)
         {
-            if (count1 > 0)
+            if (spawnerCount < count1)
             {
-                Monster monster = Instantiate(skeletons[0], enemySpawner[spawnerCount++ % 3].transform.position, Quaternion.identity);
+                GameObject monster = GetMonsterInQueue();
+                monster.transform.position = enemySpawner[spawnerCount++ % 3].transform.position;
+                monster.SetActive(true);
                 monster.transform.parent = monsters1.transform;
 
                 yield return new WaitForSeconds(waitingTime);
-
-                count1--;
             }
-            else if (count2 > 0)
+            else if (spawnerCount >= count1 && spawnerCount < count2)
             {
-                Monster monster = Instantiate(skeletons[1], enemySpawner[spawnerCount++ % 3].transform.position, Quaternion.identity);
+                GameObject monster = GetMonsterInQueue();
+                monster.transform.position = enemySpawner[spawnerCount++ % 3].transform.position;
+                monster.SetActive(true);
                 monster.transform.parent = monsters2.transform;
 
                 yield return new WaitForSeconds(waitingTime);
-
-                count2--;
             }
             else
             {

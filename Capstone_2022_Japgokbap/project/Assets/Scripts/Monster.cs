@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public abstract class Monster : MonoBehaviour
 {
     protected NavMeshAgent MyNavMesh { get; private set; }
-
     protected int enemyHp;
     protected int enemyOffensePower;
     protected int enemyDefensePower;

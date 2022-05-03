@@ -47,7 +47,7 @@ public class LobbyManager : MonoBehaviour
 
     public void Gamestart()
     {
-        LoadingSceneManager.LoadScene("GameScene");
+        LoadingSceneManager.LoadScene("SpawnTestScene");
     }
 
     #endregion

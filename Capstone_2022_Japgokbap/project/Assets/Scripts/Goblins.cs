@@ -20,13 +20,13 @@ public class Goblins : Monster
         }
     }
 
-    protected override void SpawnExpObjet()
-    {
-
-    }
-
     protected override void GetDamaged()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    protected override void SpawnExpObjet()
+    {
+        throw new System.NotImplementedException();
     }
 }
