@@ -129,22 +129,22 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         // 파일에 기록된 수만큼 몬스터 미리 생성해야함
-        for (int i = 0; i < count1; i++)
-        {
-            GameObject monster = Instantiate(skeletons[0], monsterPool.transform.position, Quaternion.identity);
-            InsertMonsterInQueue(monster);
-        }
-
-        for (int i = 0; i < count2; i++)
-        {
-            GameObject monster = Instantiate(skeletons[1], monsterPool.transform.position, Quaternion.identity);
-            InsertMonsterInQueue(monster);
-        }
+        EarlySpawnMonster(skeletons[0], count1);
+        EarlySpawnMonster(skeletons[1], count2);
 
         StartCoroutine(SpawnMonsters());
     }
 
     #region "Public Methods"
+
+    public void EarlySpawnMonster(GameObject monster, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            GameObject t_monster = Instantiate(monster, monsterPool.transform.position, Quaternion.identity);
+            InsertMonsterInQueue(t_monster);
+        }
+    }
 
     public void InsertMonsterInDictionary(Byte code, GameObject monster)
     {

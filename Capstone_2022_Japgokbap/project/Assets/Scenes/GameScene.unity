@@ -1136,23 +1136,54 @@ MonoBehaviour:
   monsters2: {fileID: 581071364}
   count3: 0
   count4: 0
+  monsters3: {fileID: 0}
   count5: 0
+  count6: 0
+  monsters4: {fileID: 0}
+  count7: 0
+  count8: 0
+  monsters5: {fileID: 0}
+  count9: 0
+  count10: 0
+  monsters6: {fileID: 0}
+  count11: 0
+  count12: 0
+  monsters7: {fileID: 0}
+  count13: 0
+  count14: 0
+  monsters8: {fileID: 0}
+  count15: 0
+  count16: 0
+  monsters9: {fileID: 0}
+  count17: 0
+  count18: 0
+  monsters10: {fileID: 0}
+  count19: 0
+  count20: 0
+  monsters11: {fileID: 0}
+  count21: 0
+  count22: 0
+  monsters12: {fileID: 0}
+  count23: 0
+  count24: 0
+  monsterPool: {fileID: 0}
   enemySpawner:
   - {fileID: 2062837119}
   - {fileID: 1720799554}
   - {fileID: 861511564}
   skeletons:
-  - {fileID: 1556059041555597673, guid: f966031d9aaa6f54e946d15294b48e18, type: 3}
-  - {fileID: 1556059041555597673, guid: 493bef09536156c4098f060fb48e35de, type: 3}
-  - {fileID: 1556059041555597673, guid: b76dfcab8424d25449f82dcbedc315d0, type: 3}
-  - {fileID: 1556059041555597673, guid: ceb82173a6538e745964d5c23f170081, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   goblins:
-  - {fileID: 1899165420293643590, guid: 301df5a5e99e33145b6b83383bf88196, type: 3}
+  - {fileID: 0}
   - {fileID: 8982903945853358959, guid: 1e6a68ac6b38fc440a31491aeb1dde27, type: 3}
   - {fileID: 2814744773495347589, guid: 3c1f43e577d59a24abb37f57d3f1c5f7, type: 3}
   - {fileID: -7115926775881964700, guid: 7c60386f5446b934c88f0d156e77034a, type: 3}
   - {fileID: -2288324265184181555, guid: c3c8ba45a35557640a0898482a7785a7, type: 3}
   orcs: []
+  specialMonsters: []
 --- !u!1 &2058756511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1424,34 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3138829616937805536, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.552188
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2886771
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138829617002302615, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3138829617314093699, guid: c6bebeddcd63a7d47848ed32bc4be283, type: 3}
