@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: anypang_hihi@naver.com
-  DevAccountToken: 4mad1idsksgehq9iex8kk86qeigm8w7z78e17dejw57nqq13du7ndk6fhwhoctjt7n58yncqe9z9zidku8m5cgr9s6e1c6roba8ohw5z5hfq8znw3o3ckep5bs83zpi6d8wgxngskzm8bnt9bgeqpybaq71p7jzj6554ax35agyqmugodgb9sue8oknxz5wzp3dqxw9a
-  SelectedStudio: 613Lab
+  DevAccountToken: 3igtemmuxthyqjkpgd3iepq4tfmjc3txyo8pi5jk5p56g1r9u6kzrfk7xf4f3z87aj6razeaaa9jemokmhfyzwjc9i89iitafr6axt9oo8esba5ztemfbo13qjh1abza5wxcmw6s41u3icu1j4k8xcq4k9j8c5ufdfcsbmwhdt511dxcwos1dxw86qt9bp5axdynh3d8
+  SelectedStudio: 
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 

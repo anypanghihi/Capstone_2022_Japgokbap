@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 6702739707539708592}
   m_Layer: 0
   m_Name: goblin_base
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

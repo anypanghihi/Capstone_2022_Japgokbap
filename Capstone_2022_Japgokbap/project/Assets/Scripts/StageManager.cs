@@ -119,9 +119,9 @@ public class StageManager : MonoBehaviour
     [Header ("Monsters")]
     [SerializeField] private GameObject[] skeletons;
     [SerializeField] private GameObject[] goblins;
-    [SerializeField] private GameObject[] orcs;
-
-    [Header ("Special Monsters")]
+    [SerializeField] private GameObject[] orc;
+    [SerializeField] private GameObject[] golems;
+    [SerializeField] private GameObject[] demons;
     [SerializeField] private GameObject[] specialMonsters;
 
     #endregion
