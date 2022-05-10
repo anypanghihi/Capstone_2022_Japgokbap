@@ -41,6 +41,8 @@ public class StageManager : MonoBehaviour
     public int waitingTime;
     public int spawnerCount;
     public bool roundEnded;
+    public int stageCount;
+    public int roundCount;
 
     [Header ("Objects")]
     public GameObject expClones;
@@ -121,17 +123,36 @@ public class StageManager : MonoBehaviour
     [SerializeField] private GameObject[] goblins;
     [SerializeField] private GameObject[] orc;
     [SerializeField] private GameObject[] golems;
-    [SerializeField] private GameObject[] demons;
+    [SerializeField] private GameObject[] demon;
     [SerializeField] private GameObject[] specialMonsters;
 
     #endregion
 
-    void Start()
+    private void Awake()
     {
         // 파일에 기록된 수만큼 몬스터 미리 생성해야함
         EarlySpawnMonster(skeletons[0], count1);
         EarlySpawnMonster(skeletons[1], count2);
+        EarlySpawnMonster(skeletons[2], count3);
+        EarlySpawnMonster(skeletons[3], count4);
 
+        EarlySpawnMonster(goblins[0], count5);
+        EarlySpawnMonster(goblins[1], count6);
+        EarlySpawnMonster(goblins[2], count7);
+        EarlySpawnMonster(goblins[3], count8);
+        EarlySpawnMonster(orc[0], count9);
+
+        EarlySpawnMonster(golems[0], count11);
+        EarlySpawnMonster(golems[1], count12);
+        EarlySpawnMonster(golems[2], count13);
+        EarlySpawnMonster(golems[3], count14);
+        EarlySpawnMonster(golems[4], count15);
+
+        EarlySpawnMonster(demon[0], count16);
+    }
+
+    private void Start() 
+    {
         StartCoroutine(SpawnMonsters());
     }
 
@@ -190,29 +211,128 @@ public class StageManager : MonoBehaviour
     {
         while (!roundEnded)
         {
-            if (spawnerCount < count1)
-            {
-                GameObject monster = GetMonsterInQueue();
-                monster.transform.position = enemySpawner[spawnerCount++ % 3].transform.position;
-                monster.SetActive(true);
-                monster.transform.parent = monsters1.transform;
-
-                yield return new WaitForSeconds(waitingTime);
-            }
-            else if (spawnerCount >= count1 && spawnerCount < count2)
-            {
-                GameObject monster = GetMonsterInQueue();
-                monster.transform.position = enemySpawner[spawnerCount++ % 3].transform.position;
-                monster.SetActive(true);
-                monster.transform.parent = monsters2.transform;
-
-                yield return new WaitForSeconds(waitingTime);
-            }
-            else
-            {
-                yield return null;
-            }
+            SpawnMonster();
+            // switch (stageCount)
+            // {
+            //     case 1 : 
+            //         Spawn1Stage();
+            //         break;
+            //     case 2 :
+            //         Spawn2Stage();
+            //         break;
+            //     case 3 :
+            //         Spawn3Stage();
+            //         break;
+            // }
+            yield return new WaitForSeconds(waitingTime);
         }
+    }
+
+    private IEnumerator Spawn1Stage()
+    {
+        if (roundCount == 1)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 2)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 3)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+
+        stageCount++;
+        roundCount = 0;
+    }
+
+    private IEnumerator Spawn2Stage()
+    {
+        if (roundCount == 1)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 2)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 3)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 4)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+
+        stageCount++;
+        roundCount = 0;
+    }
+
+    private IEnumerator Spawn3Stage()
+    {
+        if (roundCount == 1)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 2)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 3)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 4)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+        else if (roundCount == 5)
+        {
+            SpawnMonster();
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+
+        roundEnded = true;
+    }
+
+    private void SpawnMonster()
+    {
+        // if (spawnerCount > 10)
+        // {
+        //     roundCount++;
+
+        //     return;
+        // }
+
+        GameObject monster = GetMonsterInQueue();
+        monster.transform.position = enemySpawner[spawnerCount++ % 3].transform.position;
+        monster.SetActive(true);
+        monster.transform.parent = monsters1.transform;
     }
 
     #endregion
